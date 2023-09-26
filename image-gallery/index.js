@@ -9,20 +9,28 @@ const cross = document.querySelector(".cross");
 let url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=27&query=mountains`;
 
 async function randomPhoto() {
-  const response = await fetch(url);
-  const data = await response.json();
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-  slider.innerHTML = data
-    .map(({ urls: { small, raw } }) => {
-      return `<a href="${raw}"><div class="class-img"  style="background-image: url(${small})"></div></a>
+    slider.innerHTML = data
+      .map(({ urls: { small, raw } }) => {
+        return `<a href="${raw}"><div class="class-img"  style="background-image: url(${small})"></div></a>
              `;
-    })
-    .join("");
+      })
+      .join("");
+  } catch (err) {
+    alert("Все попытки Api Запросов исчерпались , попробуйте позже");
+  }
 }
 
 search.addEventListener("click", function () {
-  url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=9&query=${input.value}`;
-  randomPhoto();
+  try {
+    url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=27&query=${input.value}`;
+    randomPhoto();
+  } catch (err) {
+    alert("Все попытки Api Запросов исчерпались , попробуйте позже");
+  }
 });
 
 randomPhoto();
@@ -30,9 +38,13 @@ randomPhoto();
 // Поиск по Enter
 
 input.addEventListener("keypress", function (e) {
-  if (e.which === 13) {
-    url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=9&query=${input.value}`;
-    randomPhoto();
+  try {
+    if (e.which === 13) {
+      url = `https://api.unsplash.com/photos/random?client_id=${CLIENT_ID}&count=27&query=${input.value}`;
+      randomPhoto();
+    }
+  } catch (err) {
+    alert("Все попытки Api Запросов исчерпались , попробуйте позже");
   }
 });
 
