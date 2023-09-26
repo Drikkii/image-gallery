@@ -57,7 +57,6 @@ h1:hover {
 }
 input {
   box-sizing: border-box;
-  width: 100%;
   font-size: 1rem;
   padding: 8px 12px;
   border-radius: 25px;
@@ -80,14 +79,27 @@ input:focus {
   width: 1.5rem;
   height: 1.2rem;
 }
+.cross {
+  background-color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 10%;
+  top: 3%;
+  z-index: 2;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.hidden {
+  display: none;
+}
 
 /* main */
 .main {
   margin: 0 auto;
-  background-color: blue;
   max-width: 80rem;
 }
-.img-api {
+#img-api {
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-evenly;
@@ -95,9 +107,30 @@ input:focus {
   width: 100%;
 }
 
+.class-img {
+  z-index: 99;
+  transition: 0.3s;
+  box-shadow: 0px 0px 37px -4px rgba(0, 0, 0, 0.75);
+  display: flex;
+  width: 380px;
+  height: 214px;
+  margin-top: 15px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20%;
+  cursor: pointer;
+  overflow: hidden;
+}
+.class-img:hover {
+  z-index: 100;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 /* Footer */
 
 .footer {
+  margin-top: 2rem;
   background-color: rgba(0, 0, 0, 0.308);
   position: relative;
   gap: 30px;
@@ -124,12 +157,12 @@ input:focus {
 }
 
 .github:hover {
-  width: 4.5rem;
-  height: 3.5rem;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 .rsschool:hover {
-  width: 4.5rem;
-  height: 3.5rem;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
 }
 .Ficon {
   width: 3rem;
@@ -156,5 +189,8 @@ input:focus {
   }
   h1 {
     font-size: 25px;
+  }
+  .cross {
+    right: 20%;
   }
 }
